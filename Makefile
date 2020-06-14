@@ -42,6 +42,7 @@ shape2csv-%: guard-SHAPE
 	@mkdir -p $(OUT)
 	@docker-compose run --rm gdal ogr2ogr -f CSV -lco SEPARATOR=TAB -lco GEOMETRY=AS_WKT -oo ENCODING=CP932 -t_srs EPSG:4326 -overwrite -progress $(OUT)/${*}.csv $(SHAPE)
 	@sed -e '1d' $(OUT)/${*}.csv \
+	| sed -e 's/"//g' \
 	| sed -e 's/\(POINT\)/SRID=4326;\1/g' -e 's/\(LINESTRING\)/SRID=4326;\1/g' -e 's/\(POLYGON\)/SRID=4326;\1/g' \
 	> $(OUT)/${*}.tsv
 	@rm $(OUT)/${*}.csv
