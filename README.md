@@ -8,6 +8,8 @@ Athena や PostGIS などから利用するための地理情報空間マスタ�
 
 ## Requirement
 
+データの生成には下記モジュールに依存しているため、事前にインストールが必要となる。
+
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
@@ -30,6 +32,6 @@ $ make mesh3r SHAPE=/path/to/mesh3r/shapefile.shp
 
 出力データの形式は下記のようになっている。
 
-| メッシュコード | WKT |
-| -------------- | --- |
+- メッシュコード
+- 形状(WKT)
 
