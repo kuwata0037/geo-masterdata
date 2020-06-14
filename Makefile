@@ -8,12 +8,18 @@ all: help
 
 .PHONY: mesh2r
 mesh2r: shape2csv-mesh2r ## Create secondary mesh date from shapefile
-	cat $(OUT)/$@.tsv | \
-	awk 'BEGIN { FS="\t"; OFS="\t" } { print $$2, $$1 }' > $(OUT)/tmp.tsv
+	cat $(OUT)/$@.tsv \
+	| awk 'BEGIN { FS="\t"; OFS="\t" } { print $$2, $$1 }' \
+	> $(OUT)/tmp.tsv
 	mv $(OUT)/tmp.tsv $(OUT)/$@.tsv
 
 .PHONY: mesh3r
 mesh3r: shape2csv-mesh3r ## Create 3rd mesh date from shapefile
+	cat $(OUT)/$@.tsv \
+	| awk 'BEGIN { FS="\t"; OFS="\t" } { print $$2, $$1 }' \
+	> $(OUT)/tmp.tsv
+	mv $(OUT)/tmp.tsv $(OUT)/$@.tsv
+
 	cat $(OUT)/$@.tsv | \
 	awk 'BEGIN { FS="\t"; OFS="\t" } { print $$2, $$1 }' > $(OUT)/tmp.tsv
 	mv $(OUT)/tmp.tsv $(OUT)/$@.tsv
