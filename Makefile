@@ -20,6 +20,16 @@ mesh3r: shape2csv-mesh3r ## Create 3rd mesh date from shapefile
 	> $(OUT)/tmp.tsv
 	@mv $(OUT)/tmp.tsv $(OUT)/$@.tsv
 
+.PHONY: address
+address: shape2csv-address
+	@cat $(OUT)/$@.tsv \
+	| awk 'BEGIN { FS="\t"; OFS="\t" } { print $$6, $$2, $$4, $$5, $$1 }' > $(OUT)/tmp.tsv
+	@mv $(OUT)/tmp.tsv $(OUT)/$@.tsv
+
+.PHONY: compress
+compress:
+	gzip $(OUT)/*.tsv
+
 .PHONY: clean
 clean: ## Remove output files
 	@rm -fr $(OUT)

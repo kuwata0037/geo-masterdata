@@ -35,3 +35,19 @@ $ make mesh3r SHAPE=/path/to/mesh3r/shapefile.shp
 - メッシュコード
 - 形状(WKT)
 
+### address
+
+行政区域データの作成を行う。
+入力元データは [国土数値情報(行政区域データ)](https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-v2_3.html) を想定している。
+
+``` shell
+$ make address SHAPE=/path/to/address/shapefile.shp
+```
+
+出力データの形式は下記のようになっている。
+
+- 行政区域コード
+- 都道府県名
+- 郡・政令都市名
+- 市区町村名
+- 形状(WKT)
