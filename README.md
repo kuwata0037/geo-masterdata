@@ -1,4 +1,4 @@
-Geo masterdate
+Geo masterdata
 ==============
 
 Athena や PostGIS などから利用するための地理情報空間マスターデータの作成を行う。
